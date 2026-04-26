@@ -6,13 +6,33 @@
   <title>securlypass</title>
   <link rel="icon" id="dynamic-favicon" type="image/png" href="https://pass.securly.com/favicon.png" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #800080;
-      color: #fff;
-      text-align: center;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+#bgOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(80, 0, 80, 0.55);
+  z-index: -1;
+}
 
     /* --- Header UI --- */
     header {
@@ -148,25 +168,28 @@
       flex-wrap: wrap;
     }
 
-    .circle-btn {
-      border-radius: 17.5px;
-      border: none;
-      background-color: #b19cd9;
-      color: #fff;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 0 8px #b19cd9, 0 0 12px #b19cd9;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      padding: 8px 15px;
-    }
+.circle-btn {
+  border-radius: 17.5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 8px 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(255,255,255,0.05);
+}
 
-    .circle-btn:hover {
-      background-color: #a292d4;
-      box-shadow: 0 0 12px #a292d4, 0 0 20px #a292d4;
-    }
+.circle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+}
 
     #announcementOverlay {
       position: fixed;
@@ -433,6 +456,26 @@
   <!-- Existing overlay -->
   <div id="announcementOverlay" onclick="hideOverlay()">Jebulabubu : DYK WHO</div>
 
+<video autoplay muted loop playsinline style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+">
+  <source src="https://raw.githubusercontent.com/provxpeuser/LatchCap_V1/refs/heads/main/0426%20(online-video-cutter.com).mp4" type="video/mp4">
+</video>
+<div style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(80,0,80,0.25);
+  z-index: -1;
+"></div>
+
 <!-- Top-right time + battery with percentage -->
 <div id="topRightStatus" style="
     position: fixed;
@@ -485,7 +528,7 @@
     <img src="https://raw.githubusercontent.com/provxpeuser/HarlemMyKingV3/refs/heads/main/IMG_7053.png" class="icon-img gear" alt="Settings" onclick="toggleSettings()" />
   </header>
 
-  <h1 class="paragraph">' Jebunny_LuvsyU2ᥫ᭡ clearly made this</h1>
+  <h1 class="paragraph">'Flowerbedjeb clearly made this</h1>
   <h1 class="paragraph">Adam is helping me code tuff fr.</h1>
   <h1 class="paragraph">Only Adriel Blake and I can have this</h1>
 
@@ -519,7 +562,7 @@
     <button class="circle-btn" data-url="https://freefy.app" onclick="openEmbedWebsite(this)">FreeFy Music Player</button>
     <button class="circle-btn" data-url="https://t9os.vercel.app/music.html" onclick="openEmbedWebsite(this)">Rat Music Player</button>
     <button class="circle-btn" data-url="https://tabchats.lovable.app" onclick="openEmbedWebsite(this)">Tabchats (Messages)</button>
-    <button class="circle-btn" data-url="https://math-homework.elude.cfd/" onclick="openEmbedWebsite(this)">Proxy</button>
+    <button class="circle-btn" data-url="https://cine-browser-2.b-cdn.net" onclick="openEmbedWebsite(this)">Proxy</button>
     <h1 class="paragraph">My Tabchat WP645</h1>
   </div>
 
@@ -554,20 +597,11 @@
     <button class="circle-btn" data-url="https://db.duck.exampredictor.org/html/clash_royale" onclick="openEmbedWebsite(this)">Clash Of Vikings</button>
   </div>
 
-  <div class="label">Forbidden Games</div>
-  <h1 class="paragraph">These games show up on securly so be careful or use an proxy and get the link on the top</h1>
-  <div class="buttons">
-    <button class="circle-btn" data-url="https://cine-browser-2.b-cdn.net/embed.html?url=https://www.easyfun.gg/cloud-games/roblox.html" onclick="openEmbedWebsite(this)">Roblox 6767 Rahein Rizz</button>
-  </div>
-
   <div class="label">Forbidden Tools</div>
   <h1 class="paragraph">Beyond This Point its your fault if you get in trouble</h1>
   <div class="buttons">
-    <button class="circle-btn" data-url="https://cini.b-cdn.net/" onclick="openEmbedWebsite(this)">Melrah's Intellegence V3</button>
-    <button class="circle-btn" data-url="https://t9os.vercel.app/ai/index.html" onclick="openEmbedWebsite(this)">Melrah's Intellegence V2</button>
     <button class="circle-btn" data-url="https://www.chatbase.co/iFMolGga0VfOJ_rzzjaFG/help" onclick="openEmbedWebsite(this)">Melrah's Intellegence V1</button>
     <button class="circle-btn" data-url="https://formb.pegoku.com" onclick="openEmbedWebsite(this)">View Source Exploit</button>
-    <button class="circle-btn" data-url="https://croxyproxy.com" onclick="openEmbedWebsite(this)">CroxyProxy</button>
   </div>
 
   <!-- Music Player Container: small top-left positioned -->
@@ -605,14 +639,6 @@
 </body>
 <script>
 
-// Update log entries (most recent first)
-const updates = [
-  { date: "6:58pm Update", message: "" },
-  { date: "' Jebunny_LuvsyU2ᥫ᭡", message: "MELRAH INTELEGENCE HAS BEEN FIXED" },
-  { date: "' Jebunny_LuvsyU2ᥫ᭡", message: "Added Buttons for embeded Melrah Intellegence in your browser. Look at the bottom left" },
-  { date: "' Jebunny_LuvsyU2ᥫ᭡", message: "New Music Has Been Added" },
-
-];
 
 function showUpdateLog() {
   const overlay = document.getElementById("updateLogOverlay");
@@ -1481,8 +1507,8 @@ focusToggleBtn.onclick = () => {
   }, 10000);
 
   //Announcements
-  title.textContent = "Jebunny_LuvsyU2ᥫ᭡";
-  message.textContent = "Boi its ya favorite BunBun with da final and last only update Adding Roblox and A better AIIII 676767767777 !!!";
+  title.textContent = "Flowerbedjeb";
+  message.textContent = "Proxy update is now here. Seen in the tools area.";
 })();
 
 // Update the live time every second
