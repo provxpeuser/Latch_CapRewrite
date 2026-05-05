@@ -1454,61 +1454,75 @@ focusToggleBtn.onclick = () => {
   }
 
 (function() {
-  // Create container
   const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.top = "-100px"; // start hidden above screen
-  container.style.left = "50%";
-  container.style.transform = "translateX(-50%)";
-  container.style.width = "50%";
-  container.style.background = "#161616";
-  container.style.borderRadius = "12px";
-  container.style.boxShadow = "0 10px 30px rgba(0,0,0,0.6)";
-  container.style.overflow = "hidden";
-  container.style.zIndex = "9999";
-  container.style.opacity = "0";
-  container.style.transition = "top 0.8s ease, opacity 0.8s ease, transform 1s ease";
+  container.style.cssText = `
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    max-width: 540px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(200, 160, 255, 0.3);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
+    z-index: 9999;
+    opacity: 0;
+    transition: top 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.6s ease;
+  `;
 
-  // Title
-  const title = document.createElement("div");
-  title.textContent = "Announcement";
-  title.style.padding = "12px";
-  title.style.background = "linear-gradient(135deg, #7c3aed, #a855f7)";
-  title.style.fontSize = "16px";
-  title.style.fontWeight = "600";
-  title.style.textAlign = "center";
-  container.appendChild(title);
+  const header = document.createElement("div");
+  header.style.cssText = `
+    background: linear-gradient(90deg, rgba(140,60,255,0.6), rgba(180,100,255,0.4));
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(200,160,255,0.2);
+  `;
 
-  // Message
-  const message = document.createElement("div");
-  message.textContent = "This announcement will disappear in 10 seconds.";
-  message.style.padding = "14px";
-  message.style.fontSize = "14px";
-  message.style.textAlign = "center";
-  message.style.color = "#d4d4d4";
-  container.appendChild(message);
+  const titleEl = document.createElement("span");
+  titleEl.textContent = "I Only Talk If Jassy RILLERA Is the goat : Flowerbedjeb Alt";  // ← change sender name here
+  titleEl.style.cssText = `font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; text-transform: uppercase; font-family: Arial, sans-serif;`;
 
-  // Add to body
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "×";
+  closeBtn.style.cssText = `background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 14px; line-height: 1; padding: 0;`;
+  closeBtn.onclick = dismiss;
+
+  header.appendChild(titleEl);
+  header.appendChild(closeBtn);
+
+  const body = document.createElement("div");
+  body.textContent = "New Big Ui Update Coming out soon 5/7/26";  // ← change message here
+  body.style.cssText = `padding: 14px 16px; color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.5; font-family: Arial, sans-serif;`;
+
+  const timerBar = document.createElement("div");
+  timerBar.style.cssText = `height: 3px; background: linear-gradient(90deg, #a855f7, #7c3aed); width: 100%; transform-origin: left; transition: transform 10s linear;`;
+
+  container.appendChild(header);
+  container.appendChild(body);
+  container.appendChild(timerBar);
   document.body.appendChild(container);
+
+  function dismiss() {
+    container.style.opacity = "0";
+    container.style.top = "-100px";
+    setTimeout(() => container.remove(), 700);
+  }
 
   // Slide in
   setTimeout(() => {
     container.style.top = "15px";
     container.style.opacity = "1";
+    setTimeout(() => { timerBar.style.transform = "scaleX(0)"; }, 50);
   }, 100);
 
-  // Fade out after 10 seconds
-  setTimeout(() => {
-    container.style.opacity = "0";
-    container.style.transform = "translateX(-50%) translateY(-10px)";
-    setTimeout(() => {
-      container.remove();
-    }, 1000);
-  }, 10000);
-
-  //Announcements
-  title.textContent = "Flowerbedjeb";
-  message.textContent = "Proxy update is now here. Seen in the tools area.";
+  // Auto dismiss after 10s
+  setTimeout(dismiss, 10000);
 })();
 
 // Update the live time every second
